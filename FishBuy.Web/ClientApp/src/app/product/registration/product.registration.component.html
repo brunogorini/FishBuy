@@ -1,0 +1,141 @@
+<div class="text-center">
+  <!-- Product Registration Form -->
+  <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <h1 class="h4 titulo mb-4 mt-0">Product Registration</h1>
+    <!-- Product Name field -->
+    <div class="form-group">
+      <label for="inputName" class="sr-only">Product Name</label>
+      <input
+        type="text"
+        id="inputName"
+        placeholder="Product Name"
+        formControlName="productName"
+        class="form-control mb-3"
+        [ngClass]="{
+          'is-invalid': submitted && productFormControl.productName.errors,
+          'is-valid': productFormControl.productName.valid
+        }"
+      />
+      <!-- Product Name field invalid message-->
+      <div
+        class="invalid-feedback mb-3"
+        *ngIf="submitted && productFormControl.productName.errors"
+      >
+        <div *ngIf="productFormControl.productName.errors.required">
+          Product name is required
+        </div>
+      </div>
+    </div>
+    <!-- Product Description field -->
+    <div class="form-group">
+      <label for="inputDescription" class="sr-only">Product Description</label>
+      <textarea
+        type="text"
+        id="inputDescription"
+        placeholder="Product Description (min. length of 50 characters)"
+        formControlName="productDescription"
+        class="form-control mb-3"
+        [ngClass]="{
+          'is-invalid':
+            submitted && productFormControl.productDescription.errors,
+          'is-valid': productFormControl.productDescription.valid
+        }"
+        minlength="50"
+        maxlength="400"
+        rows="10"
+      ></textarea>
+      <!-- Product Description field invalid message-->
+      <div
+        class="invalid-feedback mb-3"
+        *ngIf="submitted && productFormControl.productDescription.errors"
+      >
+        <div *ngIf="productFormControl.productDescription.errors.required">
+          Product Description is required
+        </div>
+        <div *ngIf="productFormControl.productDescription.errors?.minlength">
+          Product Description must have at least 50 characters
+        </div>
+      </div>
+    </div>
+    <!-- Product Price field -->
+    <div class="form-group">
+      <label for="inputPrice" class="sr-only">Product Price</label>
+      <input
+        type="number"
+        min="0.01"
+        id="inputPrice"
+        placeholder="Product Price"
+        formControlName="productPrice"
+        class="form-control mb-3"
+        [ngClass]="{
+          'is-invalid': submitted && productFormControl.productPrice.errors,
+          'is-valid': productFormControl.productPrice.valid
+        }"
+      />
+      <!-- Product Price field invalid message-->
+      <div
+        class="invalid-feedback mb-3"
+        *ngIf="submitted && productFormControl.productPrice.errors"
+      >
+        <div *ngIf="productFormControl.productPrice.errors.required">
+          Product Price is required
+        </div>
+      </div>
+    </div>
+    <!-- File input -->
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputFileAddon">Upload</span>
+      </div>
+      <div class="custom-file">
+        <input
+          type="file"
+          accept=".jpg,.gif,.png"
+          class="custom-file-input"
+          id="inputFile"
+          aria-describedby="inputFileAddon"
+          (change)="inputChange($event.target.files)"
+        />
+        <label
+          class="custom-file-label text-left"
+          for="inputFile"
+          *ngIf="selectedFile"
+          >{{ selectedFile.name | truncate: 25 }}</label
+        >
+        <label
+          class="custom-file-label text-left"
+          for="inputFile"
+          *ngIf="!selectedFile"
+          >Choose a picture</label
+        >
+      </div>
+    </div>
+
+    <div class="form-inline d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn mb-3 btn-purple"
+        style="margin-right: 7px"
+        [disabled]="spinner_activated"
+      >
+        <span
+          class="spinner-border spinner-border-sm"
+          *ngIf="spinner_activated"
+        ></span>
+        Confirm
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary mb-3"
+        [routerLink]="['/product-stock-control']"
+      >
+        Cancel
+      </button>
+    </div>
+
+    <div class="alert alert-danger" *ngFor="let m of messages">
+      {{ m }}
+    </div>
+  </form>
+</div>

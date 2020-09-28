@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="row px-3">
+        <div class="card" style="width: 100%">
+          <div class="card-header font-weight-bold text-center">
+            <i class="material-icons mr-2">done_outline</i>
+            Order Confirmation
+          </div>
+          <div class="card-body">
+            <p class="font-weight-bold text-center">
+              We've received your order.
+            </p>
+            <div class="d-flex justify-content-center">
+              <i class="material-icons h1">sentiment_very_satisfied</i>
+            </div>
+            <p class="text-center">Thank you for your purchase!</p>
+            <p class="text-center">
+              Order number: <strong>{{ orderId }}</strong>
+            </p>
+
+            <div class="d-flex justify-content-center">
+              <button
+                class="btn btn-purple"
+                style="width: 50%"
+                [routerLink]="['/']"
+              >
+                <p class="mb-0">Keep shopping</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

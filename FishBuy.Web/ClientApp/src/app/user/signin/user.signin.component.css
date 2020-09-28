@@ -1,0 +1,79 @@
+﻿form {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+form .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+form div {
+  display: block;
+  padding: 0px;
+  position: relative;
+  flex: 1 1 0%;
+}
+
+form .input-email-password {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 100%;
+  height: 50px;
+  padding: 0px 16px 0px 50px;
+  border-radius: 5px;
+}
+
+form .icon-email-password {
+  position: absolute;
+  color: grey;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: rgb(40, 39, 44);
+  transition: fill 0.2s ease 0s;
+}
+
+form div .password-visibility {
+  cursor: pointer;
+  color: #8257e6;
+  position: absolute;
+  left: 350px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: rgb(40, 39, 44);
+  transition: fill 0.2s ease 0s;
+}
+
+.password-visibility-sm {
+  cursor: pointer;
+  color: #8257e6;
+  position: absolute;
+  left: 90%;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: rgb(40, 39, 44);
+  transition: fill 0.2s ease 0s;
+}
+
+h1 {
+  background-color: #202024;
+  color: #ffffff;
+  font-weight: 500;
+  border: 1px solid #d0d0d0;
+  padding: 10px 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  border-radius: 5px;
+  text-align: center;
+}
+
+button {
+  width: 250px;
+}

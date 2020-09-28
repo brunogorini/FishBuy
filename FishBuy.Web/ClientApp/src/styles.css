@@ -1,0 +1,149 @@
+/* Global */
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f1f1f1;
+}
+
+/* Tables */
+
+table {
+  margin-top: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  background-color: #ffffff !important;
+}
+
+thead {
+  color: #ffffff;
+  background: #202024;
+  text-align: left;
+}
+
+tbody.tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.table-with-pagination {
+  margin-top: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  background-color: #ffffff;
+}
+
+th.mat-header-cell {
+  color: #ffffff;
+  background: #202024;
+  text-align: left;
+  font-size: 16px;
+  padding: 12px !important;
+}
+.mat-cell {
+  color: #202024;
+  font-size: 16px;
+  padding: 12px !important;
+}
+
+.paginator {
+  background-color: #202024;
+}
+
+/* Buttons */
+
+button.btn-orange {
+  background-color: #fd951f;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 7px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+button.btn-orange:hover {
+  background: #ca7718;
+  color: #b2b2b2;
+}
+
+button.btn-purple {
+  background-color: #8257e6;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 7px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+button.btn-purple:hover {
+  background: #6845b8;
+  color: #b2b2b2;
+}
+
+button.btn-green {
+  background-color: #04d361;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 7px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+button.btn-green:hover {
+  background: #03a84d;
+  color: #b2b2b2;
+}
+
+button.btn-red {
+  background-color: #dc3545;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 7px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+button.btn-red:hover {
+  background: #9a2530;
+  color: #b2b2b2;
+}
+
+.material-icons.clickable {
+  cursor: pointer;
+}
+
+/* Forms */
+
+.form-control:focus {
+  border-color: #6845b8;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(104, 69, 184, 0.6);
+}
+
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  background-image: none;
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-image: none;
+}
+
+/* Customização do SweetAlert */
+.swal2-title {
+  font-size: 20px !important;
+}
+
+.swal2-content {
+  font-size: 15px !important;
+}
+
+/* Always show Arrows on Input Number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}

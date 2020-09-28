@@ -1,0 +1,131 @@
+<h1 class="h4 titulo my-3">Stock Control</h1>
+<p *ngIf="!products">Loading products...</p>
+
+<div class="row mt-4 mb-0">
+  <div class="col-md-8">
+    <button
+      class="btn btn-purple d-flex justify-content-center"
+      (click)="addProduct()"
+    >
+      <i class="material-icons">add</i>
+      <p class="ml-2 mb-0">Add product</p>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <input
+      class="form-control"
+      [(ngModel)]="searchKey"
+      placeholder="Search"
+      autocomplete="off"
+      (keyup)="applyFilter()"
+    />
+
+    <i
+      mat-button
+      *ngIf="searchKey"
+      (click)="resetDataTable()"
+      class="material-icons clear-input"
+      >clear</i
+    >
+  </div>
+</div>
+
+<div class="table-with-pagination">
+  <table
+    mat-table
+    matSort
+    class="table table-hover my-0"
+    [dataSource]="dataSource"
+    [hidden]="!products"
+  >
+    <ng-container matColumnDef="name">
+      <th
+        mat-header-cell
+        class="align-middle"
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        Name
+      </th>
+      <td mat-cell *matCellDef="let p">{{ p.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th
+        mat-header-cell
+        class="text-justify"
+        style="width: 50%"
+        *matHeaderCellDef
+      >
+        Description
+      </th>
+      <td mat-cell class="text-justify" style="width: 50%" *matCellDef="let p">
+        {{ p.description }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell style="width: 10%" *matHeaderCellDef mat-sort-header>
+        Price
+      </th>
+      <td mat-cell *matCellDef="let p">$ {{ p.price | number: "1.2" }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="picture">
+      <th mat-header-cell *matHeaderCellDef>Picture</th>
+      <td mat-cell *matCellDef="let p">
+        <img
+          *ngIf="p.fileName"
+          style="width: 85px; height: 50px"
+          src="../../../../../files/{{ p.fileName }}"
+        />
+        <img
+          *ngIf="!p.fileName"
+          style="width: 85px; height: 50px"
+          src="../../../../../files/fish-default.jpg"
+        />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <i
+          class="material-icons"
+          (click)="editProduct(p)"
+          style="color: #28a745; cursor: pointer"
+          >edit</i
+        >
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <i
+          class="material-icons"
+          (click)="showDialogDelete(p)"
+          style="color: #dc3545; cursor: pointer"
+          >delete</i
+        >
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div
+    *ngIf="products?.length < 1"
+    class="alert alert-warning text-center mx-0 my-0"
+    role="alert"
+  >
+    No product registered
+  </div>
+
+  <mat-paginator
+    class="paginator"
+    [pageSizeOptions]="[10, 15, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

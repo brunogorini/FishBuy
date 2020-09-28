@@ -1,0 +1,292 @@
+<h1 class="h4 titulo my-3">Check Out</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row pb-3">
+        <!-- Checkout Form Card -->
+        <div class="card" style="width: 100%">
+          <div class="card-header font-weight-bold">Delivery Address</div>
+          <div class="card-body">
+            <form
+              id="checkoutForm"
+              [formGroup]="checkoutForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="form-row">
+                <!-- Addres field -->
+                <div class="form-group col-md-8">
+                  <label for="inputAddress">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder="Main St"
+                    formControlName="address"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted && checkoutFormControl.address.errors,
+                      'is-valid': checkoutFormControl.address.valid
+                    }"
+                  />
+                  <!-- Addres field invalid message-->
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="submitted && checkoutFormControl.address.errors"
+                  >
+                    <div *ngIf="checkoutFormControl.address.errors.required">
+                      Address is required
+                    </div>
+                  </div>
+                </div>
+                <!-- Addres Number field -->
+                <div class="form-group col-md-4">
+                  <label for="inputAddressNumber">Address number</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="inputAddressNumber"
+                    placeholder="1234"
+                    formControlName="addressNumber"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted && checkoutFormControl.addressNumber.errors,
+                      'is-valid': checkoutFormControl.addressNumber.valid
+                    }"
+                  />
+                  <!-- Addres Number field invalid message-->
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="
+                      submitted && checkoutFormControl.addressNumber.errors
+                    "
+                  >
+                    <div
+                      *ngIf="checkoutFormControl.addressNumber.errors.required"
+                    >
+                      Address Number is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <!-- City field -->
+                <div class="form-group col-md-5">
+                  <label for="inputCity">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    placeholder="New York"
+                    formControlName="city"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted && checkoutFormControl.city.errors,
+                      'is-valid': checkoutFormControl.city.valid
+                    }"
+                  />
+                  <!-- City field invalid message-->
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="submitted && checkoutFormControl.city.errors"
+                  >
+                    <div *ngIf="checkoutFormControl.city.errors.required">
+                      City is required
+                    </div>
+                  </div>
+                </div>
+                <!-- State field -->
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputState"
+                    placeholder="NY"
+                    formControlName="state"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted && checkoutFormControl.state.errors,
+                      'is-valid': checkoutFormControl.state.valid
+                    }"
+                  />
+                  <!-- State field invalid message-->
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="submitted && checkoutFormControl.state.errors"
+                  >
+                    <div *ngIf="checkoutFormControl.state.errors.required">
+                      State is required
+                    </div>
+                  </div>
+                </div>
+                <!--Postal Code field -->
+                <div class="form-group col-md-3">
+                  <label for="inputPostalCode">Postal Code</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="inputPostalCode"
+                    placeholder="10022"
+                    formControlName="postalCode"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted && checkoutFormControl.postalCode.errors,
+                      'is-valid': checkoutFormControl.postalCode.valid
+                    }"
+                  />
+                  <!-- State field invalid message-->
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="submitted && checkoutFormControl.postalCode.errors"
+                  >
+                    <div *ngIf="checkoutFormControl.postalCode.errors.required">
+                      Postal Code is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <!-- Payment Method field -->
+                <div class="form-group col-md-6">
+                  <label for="inputPaymentMethod">Payment Method</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputPaymentMethod"
+                    placeholder="Credit Card"
+                    formControlName="paymentMethodId"
+                  />
+                </div>
+                <!-- Delivery field -->
+                <div class="form-group col-md-6">
+                  <label for="inputDelivery">Delivery</label>
+                  <select
+                    id="inputDelivery"
+                    class="form-control"
+                    formControlName="delivery"
+                    (change)="updateShoppingCartSumary($event.target.value)"
+                  >
+                    <option *ngFor="let d of deliveryCombo" [value]="d.value">
+                      {{ d.text }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row pb-3">
+        <!-- Checkout Table with products -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngIf="products.length == 0">
+            <tr>
+              <td></td>
+              <td class="text-right">Your Shopping Cart is empty.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="products.length != 0">
+            <tr *ngFor="let p of products">
+              <td class="d-flex justify-content-center">
+                <img
+                  *ngIf="p.fileName"
+                  src="../../../../../files/{{ p.fileName }}"
+                  style="width: 80px; height: 50px"
+                />
+                <img
+                  *ngIf="!p.fileName"
+                  style="width: 80px; height: 50px"
+                  src="../../../../../files/fish-default.jpg"
+                />
+              </td>
+              <td style="width: 50%">{{ p.name }}</td>
+              <td>
+                <input
+                  type="number"
+                  style="width: 70px"
+                  class="form-control"
+                  [readonly]="true"
+                  [(ngModel)]="p.quantity"
+                />
+              </td>
+              <td style="min-width: 128px">$ {{ p.price | number: "1.2" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <button
+          class="btn mb-3 btn-purple"
+          style="margin-right: 7px"
+          [routerLink]="['/store-shopping-cart']"
+        >
+          Back to shopping cart
+        </button>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row px-3">
+        <!-- Shopping Cart Summary Card -->
+        <div class="card" style="width: 100%">
+          <div class="card-header font-weight-bold">Cart Summary</div>
+          <div class="card-body">
+            <div class="row d-flex mb-2">
+              <div class="pl-3">
+                <span class="font-weight-bold"> Items:</span>
+              </div>
+              <div class="pr-3 ml-auto">{{ items }}</div>
+            </div>
+            <div class="row d-flex mb-2">
+              <div class="pl-3 pr-2">
+                <span class="font-weight-bold"> Subtotal:</span>
+              </div>
+              <div class="pr-3 ml-auto">$ {{ subtotal | number: "1.2" }}</div>
+            </div>
+            <div class="row d-flex mb-2">
+              <div class="pl-3 pr-2">
+                <span class="font-weight-bold"> Shipping:</span>
+              </div>
+              <div class="pr-3 ml-auto">$ {{ shipping | number: "1.2" }}</div>
+            </div>
+            <div class="row d-flex mb-4">
+              <div class="pl-3 pr-2">
+                <span class="font-weight-bold"> Total:</span>
+              </div>
+              <div class="pr-3 ml-auto font-weight-bold">
+                $ {{ total | number: "1.2" }}
+              </div>
+            </div>
+            <div class="form-group">
+              <button
+                type="submit"
+                form="checkoutForm"
+                class="btn btn-orange d-flex justify-content-center"
+                style="width: 100%"
+                [disabled]="spinner_activated"
+                *ngIf="products.length != 0"
+              >
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                  *ngIf="spinner_activated"
+                ></span>
+                <i class="material-icons">shopping_cart</i>
+                <p class="ml-2 mb-0">Place order</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

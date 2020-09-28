@@ -1,0 +1,32 @@
+<div class="container my-3" *ngIf="products">
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let p of products">
+      <a (click)="goToProduct(p)">
+        <div class="card">
+          <img
+            *ngIf="p.fileName"
+            class="card-top"
+            src="../../../../../files/{{ p.fileName }}"
+            style="width: auto; height: 200px"
+          />
+          <img
+            *ngIf="!p.fileName"
+            class="card-top"
+            src="../../../../../files/fish-default.jpg"
+            style="width: auto; height: 200px"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ p.name }}</h5>
+            <div class="card-text mb-2">{{ p.description | truncate: 70 }}</div>
+            <h5 class="h5">$ {{ p.price | number: "1.2" }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container my-3" *ngIf="products < 1">
+  <h1 class="h4 titulo">No product found!</h1>
+  <img class="no-product-found" src="../../../assets/no_product_found.png" />
+</div>

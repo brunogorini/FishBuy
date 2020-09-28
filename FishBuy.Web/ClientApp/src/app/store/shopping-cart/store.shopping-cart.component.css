@@ -1,0 +1,23 @@
+.titulo {
+  background-color: #202024;
+  color: #ffffff;
+  font-weight: 700;
+  border: 1px solid #d0d0d0;
+  padding: 10px 0;
+  font-family: Montserrat, sans-serif;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.card-header {
+  color: #ffffff;
+  background: #202024;
+  text-align: left;
+}
+
+.card {
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  background-color: #ffffff;
+}

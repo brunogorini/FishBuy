@@ -1,0 +1,118 @@
+<h1 class="h4 titulo my-3">Order Management</h1>
+<p *ngIf="!orders">Loading orders...</p>
+
+<div class="row mt-4 mb-0">
+  <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <input
+      class="form-control"
+      [(ngModel)]="searchKey"
+      placeholder="Search"
+      autocomplete="off"
+      (keyup)="applyFilter()"
+    />
+
+    <i
+      mat-button
+      *ngIf="searchKey"
+      (click)="resetDataTable()"
+      class="material-icons clear-input"
+      >clear</i
+    >
+  </div>
+</div>
+
+<div class="table-with-pagination">
+  <table
+    mat-table
+    matSort
+    class="table table-hover my-0"
+    [dataSource]="dataSource"
+    [hidden]="!orders"
+  >
+    <ng-container matColumnDef="id">
+      <th
+        mat-header-cell
+        class="align-middle"
+        *matHeaderCellDef
+        mat-sort-header
+      >
+        ID
+      </th>
+      <td mat-cell *matCellDef="let o">
+        <a (click)="viewOrderDetails(o)">{{ "Order #" + o.id }}</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell class="text-justify" *matHeaderCellDef>Status</th>
+      <td mat-cell class="text-justify" *matCellDef="let o">
+        <span *ngIf="o.status == 0" style="color: #ca7718">
+          {{ StatusEnum[o.status] }}
+        </span>
+        <span *ngIf="o.status == 1" style="color: #03a84d">
+          {{ StatusEnum[o.status] }}
+        </span>
+        <span *ngIf="o.status == 2" style="color: #4a82c6">
+          {{ StatusEnum[o.status] }}
+        </span>
+        <span *ngIf="o.status == 3" style="color: #8257e6">
+          {{ StatusEnum[o.status] }}
+        </span>
+        <span *ngIf="o.status == 4" style="color: #dc3545">
+          {{ StatusEnum[o.status] }}
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell class="text-justify" *matHeaderCellDef>Customer</th>
+      <td mat-cell class="text-justify" *matCellDef="let o">
+        {{ o.userEmail }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Order Date & Time
+      </th>
+      <td mat-cell *matCellDef="let o">
+        {{ o.orderDate | date: "yyyy/MM/dd HH:mm" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deliveryAddress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Delivery Adress</th>
+      <td mat-cell *matCellDef="let o">
+        {{ o.addressNumber + " " + o.address + ", " + o.city + ", " + o.state }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="paymentMethod">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Payment</th>
+      <td mat-cell *matCellDef="let o">{{ o.paymentMethod }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total</th>
+      <td mat-cell *matCellDef="let o">$ {{ o.total }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div
+    *ngIf="orders?.length < 1"
+    class="alert alert-warning text-center mx-0 my-0"
+    role="alert"
+  >
+    No order registered
+  </div>
+
+  <mat-paginator
+    class="paginator"
+    [pageSizeOptions]="[10, 15, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

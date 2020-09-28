@@ -1,0 +1,11 @@
+@import url(../../user/signin/user.signin.component.css);
+
+form .input-group-text {
+  height: 46px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #04d361;
+  background-color: #04d361;
+}

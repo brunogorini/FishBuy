@@ -1,0 +1,23 @@
+.titulo {
+  background-color: #202024;
+  color: #ffffff;
+  font-weight: 700;
+  border: 1px solid #d0d0d0;
+  padding: 10px 0;
+  font-family: Montserrat, sans-serif;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* filter controls */
+
+.clear-input {
+  cursor: pointer;
+  color: #8257e6;
+  position: absolute;
+  left: 87%;
+  top: 45%;
+  transform: translateY(-50%);
+  fill: rgb(40, 39, 44);
+  transition: fill 0.2s ease 0s;
+}

@@ -1,0 +1,12 @@
+.card-header {
+  color: #ffffff;
+  background: #202024;
+  text-align: left;
+}
+
+.card {
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  background-color: #ffffff;
+}

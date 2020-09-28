@@ -1,0 +1,144 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark mb-0">
+    <div class="container mb-fix mt-3 my-sm-3">
+      <a class="navbar-brand mt-3" (click)="refreshPage()"
+        ><img src="../.././assets/fish_buy_logo.png" />
+        <p class="text-nowrap">FishBuy</p></a
+      >
+      <div class="content col-6 d-inline-flex mr-auto mx-sm-0">
+        <input
+          class="col-12 form-control mr-2"
+          [(ngModel)]="searchKey"
+          placeholder="Search"
+          autocomplete="off"
+          (keyup.enter)="filterProducts()"
+        />
+        <i
+          mat-button
+          *ngIf="searchKey"
+          (click)="resetSearch()"
+          class="material-icons clear-input d-none d-sm-block"
+          >clear</i
+        >
+        <i
+          mat-button
+          *ngIf="searchKey"
+          (click)="resetSearch()"
+          class="material-icons clear-input-sm d-sm-none"
+          >clear</i
+        >
+        <div class="search-btn">
+          <i
+            mat-button
+            class="material-icons search-btn d-flex align-items-center justify-content-center"
+            (click)="filterProducts()"
+            >search</i
+          >
+        </div>
+      </div>
+      <div class="navbar mx-auto mx-sm-0">
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            *ngIf="!userSignedIn()"
+          >
+            <button class="btn btn-purple my-2" [routerLink]="['/signin']">
+              SIGN IN
+            </button>
+            <button class="btn ml-2 btn-green" [routerLink]="['/signup']">
+              CREATE ACCOUNT
+            </button>
+          </li>
+          <li class="nav-item" *ngIf="userSignedIn()">
+            <p class="text-light d-inline-flex mr-2">
+              Welcome, {{ user.firstName }}!
+            </p>
+            <i
+              class="material-icons clickable exit"
+              style="vertical-align: middle"
+              (click)="signOut()"
+              >exit_to_app</i
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="menu box-shadow">
+    <ul class="d-flex justify-content-center pl-0">
+      <li
+        class="nav-item pr-3"
+        [routerLinkActive]="['link-active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a class="nav-link" (click)="refreshPage()">Home</a>
+      </li>
+
+      <li
+        class="nav-item pr-3 d-none d-sm-block"
+        [routerLinkActive]="['link-active']"
+      >
+        <a class="nav-link" [routerLink]="['/store-account']">Your Account</a>
+      </li>
+
+      <li class="nav-item pr-3 d-sm-none" [routerLinkActive]="['link-active']">
+        <a class="nav-link" [routerLink]="['/store-account']">Account</a>
+      </li>
+
+      <li
+        class="nav-item pr-3 d-none d-sm-block"
+        [routerLinkActive]="['link-active']"
+      >
+        <a class="nav-link" [routerLink]="['/store-order-details']"
+          >Your Orders</a
+        >
+      </li>
+
+      <li class="nav-item pr-3 d-sm-none" [routerLinkActive]="['link-active']">
+        <a class="nav-link" [routerLink]="['/store-order-details']">Orders</a>
+      </li>
+
+      <li
+        class="nav-item pr-3"
+        [routerLinkActive]="['link-active']"
+        *ngIf="userAdmin()"
+      >
+        <a class="nav-link" [routerLink]="['/product-stock-control']"
+          >Stock Control</a
+        >
+      </li>
+
+      <li
+        class="nav-item pr-3"
+        [routerLinkActive]="['link-active']"
+        *ngIf="userAdmin()"
+      >
+        <a class="nav-link" [routerLink]="['/user-management']"
+          >User Management</a
+        >
+      </li>
+
+      <li
+        class="nav-item pr-3"
+        [routerLinkActive]="['link-active']"
+        *ngIf="userAdmin()"
+      >
+        <a class="nav-link" [routerLink]="['/order-management']"
+          >Order Management</a
+        >
+      </li>
+
+      <li class="nav-item" [routerLinkActive]="['link-active']">
+        <div class="nav-link d-inline-flex">
+          <i
+            class="material-icons clickable cart"
+            [routerLink]="['/store-shopping-cart']"
+            >shopping_cart</i
+          >
+          <span class="badge badge-notify">{{ itemsInCart }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</header>

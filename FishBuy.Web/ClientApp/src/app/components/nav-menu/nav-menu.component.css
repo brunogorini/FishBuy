@@ -1,0 +1,149 @@
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+  cursor: pointer;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+header {
+  width: 100%;
+  height: auto;
+  background-color: #121214 !important;
+}
+
+nav {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 980px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+img {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+}
+
+li {
+  text-align: center;
+}
+
+.menu {
+  background-color: #202024;
+}
+
+.menu li {
+  display: inline-block;
+}
+.menu li a {
+  text-decoration: none;
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 10px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.menu li a:hover {
+  text-decoration: none;
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 10px;
+  color: #f4b350;
+}
+
+.d-inline-flex {
+  margin: 0px;
+  padding: 7px;
+}
+
+.material-icons.exit {
+  color: #dc3545;
+  font-size: 32px;
+}
+
+.material-icons.exit:hover {
+  color: #e35d6a;
+}
+
+.material-icons.cart {
+  color: #fd951f;
+  font-size: 32px;
+}
+
+.material-icons.cart:hover {
+  color: #f6c272;
+}
+
+.badge-notify {
+  position: relative;
+  top: -5px;
+  left: -2px;
+  height: 20px;
+  background-color: red;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 50%;
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+  padding-right: 0.3rem !important;
+  padding-left: 0.3rem !important;
+}
+
+.content {
+  position: relative;
+}
+
+.clear-input {
+  cursor: pointer;
+  color: #8257e6;
+  position: absolute;
+  left: 90%;
+  top: 25%;
+}
+
+.clear-input-sm {
+  cursor: pointer;
+  color: #8257e6;
+  position: absolute;
+  left: 80%;
+  top: 25%;
+}
+
+.search-btn {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #8257e6;
+  border-radius: 5px;
+  width: 35px;
+  height: 38px;
+  text-align: center;
+}
+
+.mb-fix {
+  margin-bottom: 80px;
+}

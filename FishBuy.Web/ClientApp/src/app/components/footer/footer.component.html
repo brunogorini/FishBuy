@@ -1,0 +1,48 @@
+<footer>
+  <div class="footer-wrapper">
+    <div class="footer">
+      <div class="row">
+        <div class="foot-link col-6">
+          <ul>
+            <li><a target="_top" [routerLink]="['/']">Home</a></li>
+            <li><a target="_top" [routerLink]="['/about-us']">About Us</a></li>
+            <li>
+              <a target="_top" [routerLink]="['/partners']">Site Partners</a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a target="_top" [routerLink]="['/contact-us']">Contact Us</a>
+            </li>
+            <li>
+              <a target="_top" [routerLink]="['/signup']">Join</a>
+            </li>
+            <li>
+              <a target="_top" [routerLink]="['/signin']">Sign in</a>
+            </li>
+          </ul>
+          <div class="break"></div>
+        </div>
+
+        <div class="foot-logo-info col-5 mr-2">
+          <div class="row d-flex justify-content-center">
+            <a (click)="refreshPage()" title="FishBuy" class="logo"
+              ><img src="../.././assets/fish_buy_logo.png" alt="FishBuy"
+            /></a>
+            <span class="logo-text text-nowrap">FishBuy</span>
+          </div>
+          <div class="row d-flex justify-content-center pt-2">
+            <ul class="px-0">
+              <li class="d-flex justify-content-center">
+                <span class="text-nowrap">Copyright 2020 FishBuy</span>
+              </li>
+              <li class="d-flex justify-content-center">
+                <span class="text-nowrap">All rights reserved.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

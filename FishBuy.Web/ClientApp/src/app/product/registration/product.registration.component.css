@@ -1,0 +1,43 @@
+.titulo {
+  background-color: #202024;
+  color: #ffffff;
+  font-weight: 700;
+  border: 1px solid #d0d0d0;
+  padding: 10px 0;
+  font-family: Montserrat, sans-serif;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Browse";
+}
+
+.form {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  width: 200px;
+}
+
+textarea {
+  resize: none;
+}

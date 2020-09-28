@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "FishBuyDB": "ENTER PRODUCTION SQL SERVER CONNECTION STRING HERE"
+  }
+}
+

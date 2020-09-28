@@ -1,0 +1,217 @@
+<div class="text-center">
+  <!-- User Registration Form -->
+  <form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h1 class="h4 titulo mb-4 mt-0">Your Account</h1>
+    <!-- Email field -->
+    <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input
+        type="email"
+        id="inputEmail"
+        placeholder="Change your email"
+        formControlName="email"
+        class="form-control mb-3 input-email-password"
+        [ngClass]="{
+          'is-invalid': submitted && userFormControl.email.errors,
+          'is-valid': userFormControl.email.valid
+        }"
+      />
+      <i class="material-icons icon-email-password">email</i>
+    </div>
+    <!-- Email field invalid message-->
+    <div
+      class="invalid-feedback mb-3"
+      *ngIf="submitted && userFormControl.email.errors"
+    >
+      <div *ngIf="userFormControl.email.errors.required">
+        A valid email address is required
+      </div>
+      <div *ngIf="userFormControl.email.errors.email">
+        Please enter a valid email address
+      </div>
+    </div>
+    <!-- Password field -->
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        [type]="show ? 'text' : 'password'"
+        id="inputPassword"
+        placeholder="Change your password"
+        formControlName="password"
+        class="form-control mb-3 input-email-password"
+        [ngClass]="{
+          'is-invalid': submitted && userFormControl.password.errors,
+          'is-valid': userFormControl.password.valid
+        }"
+      />
+
+      <i class="material-icons icon-email-password">lock</i>
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="show = !show"
+        *ngIf="!show"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="show = !show"
+        *ngIf="!show"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="show = !show"
+        *ngIf="show"
+        >visibility</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="show = !show"
+        *ngIf="show"
+        >visibility</i
+      >
+    </div>
+    <!-- Password field invalid message-->
+    <div
+      class="invalid-feedback mb-3"
+      *ngIf="submitted && userFormControl.password.errors"
+    >
+      <div *ngIf="userFormControl.password.errors.required">
+        A password is required
+      </div>
+      <div *ngIf="userFormControl.password.errors.minlength">
+        Password must be at least 6 characters
+      </div>
+    </div>
+    <!-- Confirm Password field -->
+    <div class="form-group">
+      <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+      <input
+        [type]="showConfirm ? 'text' : 'password'"
+        id="inputConfirmPassword"
+        placeholder="Confirm new password"
+        formControlName="confirmPassword"
+        class="form-control mb-3 input-email-password"
+        [ngClass]="{
+          'is-invalid': submitted && userFormControl.confirmPassword.errors,
+          'is-valid': userFormControl.confirmPassword.valid
+        }"
+      />
+
+      <i class="material-icons icon-email-password">lock</i>
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="show = !show"
+        *ngIf="!show"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="show = !show"
+        *ngIf="!show"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="show = !show"
+        *ngIf="show"
+        >visibility</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="show = !show"
+        *ngIf="show"
+        >visibility</i
+      >
+    </div>
+    <!-- Confirm Password field invalid message-->
+    <div
+      class="invalid-feedback mb-3"
+      *ngIf="submitted && userFormControl.confirmPassword.errors"
+    >
+      <div *ngIf="userFormControl.confirmPassword.errors.required">
+        Confirm password is required
+      </div>
+      <div *ngIf="userFormControl.confirmPassword.errors.mustMatch">
+        Password and Confirm Password must match
+      </div>
+    </div>
+    <!-- First name field -->
+    <div class="input-group d-inline-flex">
+      <label for="inputFirstName" class="sr-only">First name</label>
+      <div class="input-group-prepend col-3">
+        <span class="input-group-text mx-0">First Name</span>
+      </div>
+      <input
+        type="text"
+        id="inputFirstName"
+        placeholder="Change your fisrt name"
+        formControlName="firstName"
+        class="form-control mb-3"
+        [ngClass]="{
+          'is-invalid': submitted && userFormControl.firstName.errors,
+          'is-valid': userFormControl.firstName.valid
+        }"
+      />
+    </div>
+    <!-- First name field invalid message-->
+    <div
+      class="invalid-feedback mb-3"
+      *ngIf="submitted && userFormControl.firstName.errors"
+    >
+      <div *ngIf="userFormControl.firstName.errors.required">
+        Please enter your first name
+      </div>
+    </div>
+    <!-- Last name field -->
+    <div class="input-group d-inline-flex">
+      <label for="inputLastName" class="sr-only">Last name</label>
+      <div class="input-group-prepend col-3">
+        <span class="input-group-text mx-0">Last Name</span>
+      </div>
+      <input
+        type="text"
+        id="inputLastName"
+        placeholder="Change your last name"
+        formControlName="lastName"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid': submitted && userFormControl.lastName.errors,
+          'is-valid': userFormControl.lastName.valid
+        }"
+      />
+    </div>
+    <!-- Last name field invalid message-->
+    <div
+      class="invalid-feedback mt-3"
+      *ngIf="submitted && userFormControl.lastName.errors"
+    >
+      <div *ngIf="userFormControl.lastName.errors.required">
+        Please enter your last name
+      </div>
+    </div>
+
+    <div class="form-inline d-flex justify-content-center">
+      <button
+        type="submit"
+        class="btn mt-4 mb-3 btn-purple"
+        style="margin-right: 7px"
+        [disabled]="spinner_activated"
+      >
+        <span
+          class="spinner-border spinner-border-sm"
+          *ngIf="spinner_activated"
+        ></span>
+        Update
+      </button>
+
+      <button type="button" class="btn btn-secondary mb-3" [routerLink]="['/']">
+        Cancel
+      </button>
+    </div>
+
+    <div class="alert alert-danger" *ngFor="let m of messages">
+      {{ m }}
+    </div>
+  </form>
+</div>
