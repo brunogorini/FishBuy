@@ -48,6 +48,14 @@ export class StoreOrderHistoryComponent {
     );
   }
 
+  get noOrderToDisplay(): boolean {
+    let noOrderToDisplay: boolean = false;
+    setTimeout(function () {
+      noOrderToDisplay = true;
+    }, 3000);
+    return noOrderToDisplay;
+  }
+
   public orderItems(products: Product[]): number {
     if (products) {
       return products.reduce((acc, product) => acc + product.quantity, 0);

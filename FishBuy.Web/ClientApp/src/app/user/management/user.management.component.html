@@ -1,5 +1,12 @@
 <h1 class="h4 titulo my-3">User Management</h1>
-<p *ngIf="!users">Loading users...</p>
+
+<div class="row mt-4 mb-0" *ngIf="!users">
+  <div class="col-md-12 d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
 
 <div class="row mt-4 mb-0">
   <div class="col-md-8">
@@ -101,7 +108,7 @@
   </table>
 
   <div
-    *ngIf="users?.length < 1"
+    *ngIf="users?.length < 1 && noUserToDisplay"
     class="alert alert-warning text-center mx-0 my-0"
     role="alert"
   >

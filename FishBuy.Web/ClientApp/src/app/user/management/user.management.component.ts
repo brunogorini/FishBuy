@@ -41,6 +41,14 @@ export class UserManagementComponent {
     );
   }
 
+  get noUserToDisplay(): boolean {
+    let noUserToDisplay: boolean = false;
+    setTimeout(function () {
+      noUserToDisplay = true;
+    }, 3000);
+    return noUserToDisplay;
+  }
+
   public addUser() {
     sessionStorage.setItem("userSession", "");
     this.router.navigate(["/user-registration"]);

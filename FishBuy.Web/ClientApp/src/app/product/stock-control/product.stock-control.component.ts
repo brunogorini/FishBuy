@@ -40,6 +40,14 @@ export class ProductStockControlComponent {
     );
   }
 
+  get noProductToDisplay(): boolean {
+    let noProductToDisplay: boolean = false;
+    setTimeout(function () {
+      noProductToDisplay = true;
+    }, 3000);
+    return noProductToDisplay;
+  }
+
   public addProduct() {
     sessionStorage.setItem("productSession", "");
     this.router.navigate(["/product-registration"]);

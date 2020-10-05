@@ -42,6 +42,14 @@ export class OrderManagementComponent {
     );
   }
 
+  get noOrderToDisplay(): boolean {
+    let noOrderToDisplay: boolean = false;
+    setTimeout(function () {
+      noOrderToDisplay = true;
+    }, 3000);
+    return noOrderToDisplay;
+  }
+
   public viewOrderDetails(order: Order) {
     sessionStorage.setItem("orderSession", JSON.stringify(order));
     this.router.navigate(["/order-details"]);

@@ -1,5 +1,12 @@
 <h1 class="h4 titulo my-3">Stock Control</h1>
-<p *ngIf="!products">Loading products...</p>
+
+<div class="row mt-4 mb-0" *ngIf="!products">
+  <div class="col-md-12 d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
 
 <div class="row mt-4 mb-0">
   <div class="col-md-8">
@@ -116,7 +123,7 @@
   </table>
 
   <div
-    *ngIf="products?.length < 1"
+    *ngIf="products?.length < 1 && noProductToDisplay"
     class="alert alert-warning text-center mx-0 my-0"
     role="alert"
   >
