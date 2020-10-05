@@ -101,26 +101,26 @@
       <i class="material-icons icon-email-password">lock</i>
       <i
         class="material-icons password-visibility d-none d-sm-block"
-        (click)="show = !show"
-        *ngIf="!show"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="!showConfirm"
         >visibility_off</i
       >
       <i
         class="material-icons password-visibility-sm d-sm-none"
-        (click)="show = !show"
-        *ngIf="!show"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="!showConfirm"
         >visibility_off</i
       >
       <i
         class="material-icons password-visibility d-none d-sm-block"
-        (click)="show = !show"
-        *ngIf="show"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="showConfirm"
         >visibility</i
       >
       <i
         class="material-icons password-visibility-sm d-sm-none"
-        (click)="show = !show"
-        *ngIf="show"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="showConfirm"
         >visibility</i
       >
     </div>

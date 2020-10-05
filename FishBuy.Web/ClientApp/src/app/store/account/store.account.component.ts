@@ -13,6 +13,8 @@ export class StoreAccountComponent implements OnInit {
   protected user: User;
   protected spinner_activated: boolean;
   protected messages: string[];
+  protected show: boolean = false;
+  protected showConfirm: boolean = false;
   protected userForm: FormGroup;
   protected submitted = false;
 

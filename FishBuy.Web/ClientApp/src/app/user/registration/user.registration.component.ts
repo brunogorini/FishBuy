@@ -14,6 +14,8 @@ export class UserRegistrationComponent implements OnInit {
   protected userSession: string;
   protected spinner_activated: boolean;
   protected messages: string[];
+  protected show: boolean = false;
+  protected showConfirm: boolean = false;
   protected userForm: FormGroup;
   protected submitted = false;
 
@@ -35,13 +37,36 @@ export class UserRegistrationComponent implements OnInit {
   }
 
   public setFormValidation() {
-    this.userForm = this.formBuilder.group({
-      email: [this.user.email, [Validators.required, Validators.email]],
-      password: ["", [Validators.minLength(6)]],
-      firstName: [this.user.firstName, Validators.required],
-      lastName: [this.user.lastName, Validators.required],
-      administrator: [this.user.administrator, Validators.required],
-    });
+    this.userForm = this.formBuilder.group(
+      {
+        email: [this.user.email, [Validators.required, Validators.email]],
+        password: ["", [Validators.minLength(6)]],
+        confirmPassword: ["", Validators.required],
+        firstName: [this.user.firstName, Validators.required],
+        lastName: [this.user.lastName, Validators.required],
+        administrator: [this.user.administrator, Validators.required],
+      },
+      {
+        validator: this.mustMatch("password", "confirmPassword"),
+      }
+    );
+  }
+
+  public mustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        return;
+      }
+
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 
   get userFormControl() {

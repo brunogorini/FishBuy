@@ -47,13 +47,25 @@
 
       <i class="material-icons icon-email-password">lock</i>
       <i
-        class="material-icons password-visibility"
+        class="material-icons password-visibility d-none d-sm-block"
         (click)="show = !show"
         *ngIf="!show"
         >visibility_off</i
       >
       <i
-        class="material-icons password-visibility"
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="show = !show"
+        *ngIf="!show"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="show = !show"
+        *ngIf="show"
+        >visibility</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
         (click)="show = !show"
         *ngIf="show"
         >visibility</i
@@ -71,6 +83,61 @@
         Password must be at least 6 characters
       </div>
     </div>
+
+    <!-- Confirm Password field -->
+    <div class="form-group">
+      <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+      <input
+        [type]="showConfirm ? 'text' : 'password'"
+        id="inputConfirmPassword"
+        placeholder="Confirm new password"
+        formControlName="confirmPassword"
+        class="form-control mb-3 input-email-password"
+        [ngClass]="{
+          'is-invalid': submitted && userFormControl.confirmPassword.errors,
+          'is-valid': userFormControl.confirmPassword.valid
+        }"
+      />
+
+      <i class="material-icons icon-email-password">lock</i>
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="!showConfirm"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="!showConfirm"
+        >visibility_off</i
+      >
+      <i
+        class="material-icons password-visibility d-none d-sm-block"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="showConfirm"
+        >visibility</i
+      >
+      <i
+        class="material-icons password-visibility-sm d-sm-none"
+        (click)="showConfirm = !showConfirm"
+        *ngIf="showConfirm"
+        >visibility</i
+      >
+    </div>
+    <!-- Confirm Password field invalid message-->
+    <div
+      class="invalid-feedback mb-3"
+      *ngIf="submitted && userFormControl.confirmPassword.errors"
+    >
+      <div *ngIf="userFormControl.confirmPassword.errors.required">
+        Confirm password is required
+      </div>
+      <div *ngIf="userFormControl.confirmPassword.errors.mustMatch">
+        Password and Confirm Password must match
+      </div>
+    </div>
+
     <!-- First name field -->
     <div class="input-group d-inline-flex">
       <label for="inputFirstName" class="sr-only">First name</label>
