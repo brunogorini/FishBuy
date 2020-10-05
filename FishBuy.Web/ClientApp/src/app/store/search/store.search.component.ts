@@ -33,7 +33,6 @@ export class StoreSearchComponent {
   }
 
   public filterProductsBySearchKey(products: Product[], searchKey: string) {
-    console.log(products);
     return products.filter(
       (product) =>
         product.description.toLowerCase().includes(searchKey.toLowerCase()) ||
