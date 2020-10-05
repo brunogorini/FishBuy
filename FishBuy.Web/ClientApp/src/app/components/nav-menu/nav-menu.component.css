@@ -98,6 +98,11 @@ li {
   color: #f6c272;
 }
 
+.material-icons.white {
+  color: #ffffff;
+  font-size: 32px;
+}
+
 .badge-notify {
   position: relative;
   top: -5px;
