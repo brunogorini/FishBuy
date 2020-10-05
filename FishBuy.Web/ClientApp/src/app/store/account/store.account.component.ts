@@ -82,13 +82,14 @@ export class StoreAccountComponent implements OnInit {
       () => {
         this.messages = [];
         this.userService.user = this.user;
+        this.deactivateWait();
         this.router.navigate(["/"]);
       },
       (e) => {
         this.messages = e.error;
+        this.deactivateWait();
       }
     );
-    this.deactivateWait();
   }
 
   public activateWait() {

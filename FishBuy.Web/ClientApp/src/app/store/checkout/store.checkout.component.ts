@@ -104,13 +104,14 @@ export class StoreCheckoutComponent implements OnInit {
         sessionStorage.setItem("orderId", orderId.toString());
         this.products = [];
         this.shoppingCart.emptyShoppingCart();
+        this.deactivateWait();
         this.router.navigate(["/store-order-placed"]);
       },
       (e) => {
         console.log(e.error);
+        this.deactivateWait();
       }
     );
-    this.deactivateWait();
   }
 
   public createOrder(): Order {

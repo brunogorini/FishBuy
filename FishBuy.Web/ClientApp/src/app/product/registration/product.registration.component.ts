@@ -92,24 +92,27 @@ export class ProductRegistrationComponent implements OnInit {
       this.productService.register(this.product).subscribe(
         (productJson) => {
           this.messages = [];
+          this.deactivateWait();
           this.router.navigate(["/product-stock-control"]);
         },
         (e) => {
           this.messages = e.error;
+          this.deactivateWait();
         }
       );
     } else {
       this.productService.update(this.product).subscribe(
         (productJson) => {
           this.messages = [];
+          this.deactivateWait();
           this.router.navigate(["/product-stock-control"]);
         },
         (e) => {
           this.messages = e.error;
+          this.deactivateWait();
         }
       );
     }
-    this.deactivateWait();
   }
 
   public fileValidation() {

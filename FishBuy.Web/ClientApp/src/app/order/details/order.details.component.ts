@@ -42,12 +42,13 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.updateOrderStatus(this.order).subscribe(
       () => {
         this.router.navigate(["/order-management"]);
+        this.deactivateWait();
       },
       (e) => {
         console.log(e.error);
+        this.deactivateWait();
       }
     );
-    this.deactivateWait();
   }
 
   public activateWait() {

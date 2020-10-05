@@ -66,12 +66,13 @@ export class UserSigninComponent implements OnInit {
         } else {
           this.router.navigate([this.returnUrl]);
         }
+        this.deactivateWait();
       },
       (err) => {
         this.messages = err.error;
+        this.deactivateWait();
       }
     );
-    this.deactivateWait();
   }
 
   public activateWait() {

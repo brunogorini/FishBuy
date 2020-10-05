@@ -85,12 +85,13 @@ export class UserSignupComponent implements OnInit {
         this.user_registered = true;
         this.messages = [];
         document.forms[0].reset();
+        this.deactivateWait();
       },
       (e) => {
         this.messages = e.error;
+        this.deactivateWait();
       }
     );
-    this.deactivateWait();
   }
 
   public activateWait() {

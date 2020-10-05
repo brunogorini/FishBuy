@@ -91,24 +91,27 @@ export class UserRegistrationComponent implements OnInit {
       this.userService.register(this.user).subscribe(
         (userJson) => {
           this.messages = [];
+          this.deactivateWait();
           this.router.navigate(["/user-management"]);
         },
         (e) => {
           this.messages = e.error;
+          this.deactivateWait();
         }
       );
     } else {
       this.userService.update(this.user).subscribe(
         () => {
           this.messages = [];
+          this.deactivateWait();
           this.router.navigate(["/user-management"]);
         },
         (e) => {
           this.messages = e.error;
+          this.deactivateWait();
         }
       );
     }
-    this.deactivateWait();
   }
 
   public activateWait() {

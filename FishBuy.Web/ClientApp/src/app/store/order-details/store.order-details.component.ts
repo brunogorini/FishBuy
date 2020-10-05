@@ -43,13 +43,14 @@ export class StoreOrderDetailsComponent implements OnInit {
     this.order.status = OrderStatusEnum.Cancelled;
     this.orderService.updateOrderStatus(this.order).subscribe(
       () => {
+        this.deactivateWait();
         this.router.navigate(["/store-order-history"]);
       },
       (e) => {
         console.log(e.error);
+        this.deactivateWait();
       }
     );
-    this.deactivateWait();
   }
 
   public activateWait() {
