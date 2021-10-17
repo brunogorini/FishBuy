@@ -1,4 +1,3 @@
-using AutoMapper;
 using FishBuy.Application.Services;
 using FishBuy.Domain.Business;
 using FishBuy.Domain.Contracts;

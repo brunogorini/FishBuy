@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { Product } from "../../model/product";
-import { Order } from "../../model/order";
 import { Router } from "@angular/router";
 import { ComboBoxModel } from "src/app/model/components/ComboBox";
-import { OrderService } from "src/app/services/order/order.service";
 import { OrderStatusEnum } from "src/app/model/components/OrderStatusEnum";
+import { OrderService } from "src/app/services/order/order.service";
+import { Order } from "../../model/order";
 
 @Component({
   selector: "app-store-order-details",
