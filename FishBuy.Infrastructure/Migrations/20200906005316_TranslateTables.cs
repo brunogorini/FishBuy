@@ -8,21 +8,6 @@ namespace FishBuy.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "ItemPedidos");
-
-            migrationBuilder.DropTable(
-                name: "Produtos");
-
-            migrationBuilder.DropTable(
-                name: "Pedidos");
-
-            migrationBuilder.DropTable(
-                name: "FormaPagamento");
-
-            migrationBuilder.DropTable(
-                name: "Usuarios");
-
             migrationBuilder.CreateTable(
                 name: "PaymentMethods",
                 columns: table => new
@@ -157,20 +142,7 @@ namespace FishBuy.Infrastructure.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "OrderItems");
 
-            migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "PaymentMethods");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.CreateTable(
                 name: "FormaPagamento",

@@ -1,10 +1,9 @@
 {
   "dependencies": {
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/nipponcloud/databases/FishBuyDB",
-      "type": "mssql.azure",
+      "type": "mssql.onprem",
       "connectionId": "FishBuyDB",
-      "secretStore": "AzureAppSettings"
+      "secretStore": "AppSettings"
     }
   }
 }
